@@ -1334,8 +1334,23 @@ section{ position:relative; padding:120px 0; }
 .footer__brand p{ color:var(--text-faint); font-size:13.5px; margin-top:10px; }
 .footer__col{ display:flex; flex-direction:column; gap:12px; }
 .footer__heading{ font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-faint); margin-bottom:4px; }
-.footer__col a{ font-size:14px; color:var(--text-dim); transition:color 0.2s; }
+.footer__col a{ font-size:14px; color:var(--text-dim); transition:color 0.2s; display:inline-flex; align-items:center; gap:8px; }
 .footer__col a:hover{ color:var(--text); }
+.footer__soon{
+  display:inline-flex;
+  align-items:center;
+  font-family:var(--font-mono);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--warning);
+  background:rgba(201,162,75,0.12);
+  border:1px solid rgba(201,162,75,0.3);
+  border-radius:999px;
+  padding:2px 8px;
+  line-height:1.4;
+}
 .footer__bottom{
   border-top:1px solid var(--border);
   padding-top:24px;
@@ -4956,15 +4971,15 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
       <div class="footer__col">
         <span class="footer__heading">Company</span>
         <a href="#top" data-footer-modal="about">About</a>
-        <a href="mailto:hello@asteraai.site">Contact</a>
-        <a href="mailto:careers@asteraai.site" data-footer-modal="careers">Careers</a>
+        <a href="mailto:hello@asteraai.vercel.app">Contact</a>
+        <a href="mailto:careers@asteraai.vercel.app" data-footer-modal="careers">Careers</a>
       </div>
 
       <div class="footer__col">
         <span class="footer__heading">Resources</span>
         <a href="#faq" data-footer-modal="help">Help Center</a>
-        <a href="#top" data-footer-modal="docs">Documentation</a>
-        <a href="#top" data-footer-modal="blog">Blog</a>
+        <a href="#top" data-footer-modal="docs">Documentation <span class="footer__soon">Coming Soon</span></a>
+        <a href="#top" data-footer-modal="blog">Blog <span class="footer__soon">Coming Soon</span></a>
       </div>
 
       <div class="footer__col">
@@ -5003,18 +5018,18 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
       title: "Careers at Astera",
       html: "<p>We're a small, product-focused team building tools for creators. We don't have open roles listed right now, but we're always happy to hear from people who care about the creator economy.</p>" +
             "<p>Send us your background and what you'd like to work on.</p>" +
-            "<div class=\"modal-actions\"><a href=\"mailto:careers@asteraai.site\" class=\"btn btn--primary btn--block\">Email careers@asteraai.site</a></div>"
+            "<div class=\"modal-actions\"><a href=\"mailto:careers@asteraai.vercel.app\" class=\"btn btn--primary btn--block\">Email careers@asteraai.vercel.app</a></div>"
     },
     help: {
       title: "Help Center",
       html: "<p>Most common questions are answered in our FAQ section below. If you can't find what you're looking for, our support team is one email away.</p>" +
-            "<div class=\"modal-actions\"><a href=\"#faq\" class=\"btn btn--secondary btn--block\" id=\"footer_helpToFaq\">Go to FAQ</a><a href=\"mailto:hello@asteraai.site\" class=\"btn btn--primary btn--block\">Contact Support</a></div>"
+            "<div class=\"modal-actions\"><a href=\"#faq\" class=\"btn btn--secondary btn--block\" id=\"footer_helpToFaq\">Go to FAQ</a><a href=\"mailto:hello@asteraai.vercel.app\" class=\"btn btn--primary btn--block\">Contact Support</a></div>"
     },
     docs: {
       title: "Documentation",
       html: "<p>Astera's documentation covers getting started, connecting your brand voice, using the AI Studio, and reading your analytics dashboard.</p>" +
             "<p>Full docs are being written alongside the product — for now, the fastest way to learn Astera is to explore the app or reach out and we'll walk you through it.</p>" +
-            "<div class=\"modal-actions\"><a href=\"mailto:hello@asteraai.site\" class=\"btn btn--primary btn--block\">Ask a question</a></div>"
+            "<div class=\"modal-actions\"><a href=\"mailto:hello@asteraai.vercel.app\" class=\"btn btn--primary btn--block\">Ask a question</a></div>"
     },
     blog: {
       title: "Astera Blog",
@@ -5027,14 +5042,14 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
       html: "<p><strong>Last updated:</strong> 2026</p>" +
             "<p>Astera collects only the information needed to operate your account: your email, the content you create, and basic usage data used to improve the product.</p>" +
             "<p>We never sell your data. Content you create is yours. You can request export or deletion of your data at any time by contacting us.</p>" +
-            "<p>For questions about this policy, contact <a href=\"mailto:hello@asteraai.site\">hello@asteraai.site</a>.</p>"
+            "<p>For questions about this policy, contact <a href=\"mailto:hello@asteraai.vercel.app\">hello@asteraai.vercel.app</a>.</p>"
     },
     terms: {
       title: "Terms of Service",
       html: "<p><strong>Last updated:</strong> 2026</p>" +
             "<p>By using Astera, you agree to use the service responsibly and not to misuse the platform to generate harmful or illegal content.</p>" +
             "<p>Paid plans, when available, are billed on a recurring basis and can be cancelled at any time. The Free plan is provided as-is.</p>" +
-            "<p>For questions about these terms, contact <a href=\"mailto:hello@asteraai.site\">hello@asteraai.site</a>.</p>"
+            "<p>For questions about these terms, contact <a href=\"mailto:hello@asteraai.vercel.app\">hello@asteraai.vercel.app</a>.</p>"
     }
   };
 
