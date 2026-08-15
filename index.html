@@ -1247,6 +1247,23 @@ section{ position:relative; padding:120px 0; }
 .pricing-card__features li{ display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text-dim); }
 .pricing-card__features i{ width:16px; height:16px; color:var(--cyan); flex-shrink:0; }
 
+.pricing-card__soon{
+  position:absolute; top:-13px; right:32px;
+  background:var(--bg-elev);
+  border:1px solid var(--border-strong);
+  color:var(--text-dim);
+  font-size:11px; font-weight:700;
+  letter-spacing:0.05em; text-transform:uppercase;
+  padding:5px 14px; border-radius:999px;
+}
+.btn--disabled,
+.btn--disabled:hover{
+  opacity:0.5;
+  cursor:not-allowed;
+  pointer-events:none;
+  filter:grayscale(0.3);
+}
+
 /* =========================================================
    FAQ
    ========================================================= */
@@ -1324,11 +1341,99 @@ section{ position:relative; padding:120px 0; }
   padding-top:24px;
   font-size:13px;
   color:var(--text-faint);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
 }
+.footer__credit{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--text-faint);
+  font-size:13px;
+  transition:color 0.2s;
+}
+.footer__credit:hover{ color:var(--text); }
+.footer__credit svg{ width:15px; height:15px; flex-shrink:0; }
 
 /* =========================================================
    Scroll reveal
    ========================================================= */
+/* =========================================================
+   ASTERA — Comparison Table
+   ========================================================= */
+.compare{ background:var(--bg-elev); }
+.compare-table-wrap{
+  overflow-x:auto;
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  background:var(--bg-card);
+  box-shadow:var(--shadow-card);
+}
+.compare-table{
+  width:100%;
+  min-width:640px;
+  border-collapse:collapse;
+  font-family:var(--font-body);
+}
+.compare-table thead th{
+  text-align:left;
+  padding:22px 24px;
+  font-family:var(--font-display);
+  font-size:16px;
+  font-weight:600;
+  color:var(--text);
+  border-bottom:1px solid var(--border);
+  background:var(--bg-card);
+}
+.compare-table thead th.compare-col--brand{
+  color:var(--violet);
+  position:relative;
+}
+.compare-table thead th.compare-col--brand .compare-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.compare-table thead th:not(:first-child),
+.compare-table tbody td:not(:first-child){
+  text-align:center;
+}
+.compare-table tbody td{
+  padding:18px 24px;
+  border-bottom:1px solid var(--border);
+  color:var(--text-dim);
+  font-size:15px;
+}
+.compare-table tbody tr:last-child td{ border-bottom:none; }
+.compare-table tbody td:first-child{
+  color:var(--text);
+  font-weight:500;
+  white-space:nowrap;
+}
+.compare-table tbody tr:hover td{ background:var(--bg-card-hover); }
+.compare-table .compare-yes{ color:var(--success); }
+.compare-table .compare-no{ color:var(--text-faint); }
+.compare-table .compare-yes i,
+.compare-table .compare-no i{ width:18px; height:18px; }
+.compare-col--brand{
+  background:var(--violet-soft);
+  border-left:1px solid rgba(245,166,35,0.3);
+  border-right:1px solid rgba(245,166,35,0.3);
+}
+.compare-table tbody td.compare-col--brand{ background:var(--violet-soft); }
+.compare-note{
+  margin-top:20px;
+  color:var(--text-faint);
+  font-size:13px;
+  text-align:center;
+}
+@media (max-width:768px){
+  .compare-table thead th, .compare-table tbody td{ padding:14px 16px; font-size:14px; }
+}
+
 .reveal{
   opacity:0;
   transform:translateY(24px);
@@ -4206,6 +4311,7 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
       <a href="#features" class="nav-link">Features</a>
       <a href="#how-it-works" class="nav-link">How It Works</a>
       <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#compare" class="nav-link">Compare</a>
     </nav>
 
     <div class="navbar__actions">
@@ -4222,6 +4328,7 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
     <a href="#features" class="mobile-link">Features</a>
     <a href="#how-it-works" class="mobile-link">How It Works</a>
     <a href="#pricing" class="mobile-link">Pricing</a>
+    <a href="#compare" class="mobile-link">Compare</a>
     <div class="mobile-menu__actions">
       <a href="#/login" class="btn btn--ghost" style="width:100%">Log in</a>
       <a href="#/register" class="btn btn--primary" style="width:100%">Get Started</a>
@@ -4536,7 +4643,7 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
 </section>
 
 <!-- ================= ANALYTICS SECTION ================= -->
-<section class="analytics">
+<section class="analytics" id="analytics">
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">Insights</p>
@@ -4640,6 +4747,7 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
 
       <div class="pricing-card pricing-card--featured reveal reveal--delay-1">
         <span class="pricing-card__badge">Most Popular</span>
+        <span class="pricing-card__soon">Coming Soon</span>
         <span class="pricing-card__plan">Creator</span>
         <div class="pricing-card__price"><span class="price-amount">$19</span><span class="price-period">/ month</span></div>
         <ul class="pricing-card__features">
@@ -4650,10 +4758,11 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
           <li><i data-lucide="check"></i>Advanced analytics</li>
           <li><i data-lucide="check"></i>Brand Kit</li>
         </ul>
-        <a href="#/login" class="btn btn--primary" style="width:100%">Start Creating</a>
+        <a href="javascript:void(0)" class="btn btn--primary btn--disabled" style="width:100%" aria-disabled="true">Coming Soon</a>
       </div>
 
       <div class="pricing-card reveal reveal--delay-2">
+        <span class="pricing-card__soon">Coming Soon</span>
         <span class="pricing-card__plan">Pro</span>
         <div class="pricing-card__price"><span class="price-amount">$49</span><span class="price-period">/ month</span></div>
         <ul class="pricing-card__features">
@@ -4663,14 +4772,85 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
           <li><i data-lucide="check"></i>Advanced insights</li>
           <li><i data-lucide="check"></i>Priority features</li>
         </ul>
-        <a href="#/login" class="btn btn--secondary" style="width:100%">Go Pro</a>
+        <a href="javascript:void(0)" class="btn btn--secondary btn--disabled" style="width:100%" aria-disabled="true">Coming Soon</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ================= COMPARISON ================= -->
+<section class="compare" id="compare">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Comparison</p>
+      <h2>Why creators choose Astera.</h2>
+      <p class="section-sub">See how Astera stacks up against generic AI writing tools and juggling multiple apps.</p>
+    </div>
+
+    <div class="compare-table-wrap reveal reveal--delay-1">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="compare-col--brand">
+              <span class="compare-brand"><span class="star-mark"></span>Astera</span>
+            </th>
+            <th>Generic AI Writer</th>
+            <th>Manual Workflow</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AI content generation</td>
+            <td class="compare-col--brand compare-yes"><i data-lucide="check"></i></td>
+            <td class="compare-yes"><i data-lucide="check"></i></td>
+            <td class="compare-no"><i data-lucide="x"></i></td>
+          </tr>
+          <tr>
+            <td>Trained on your brand voice</td>
+            <td class="compare-col--brand compare-yes"><i data-lucide="check"></i></td>
+            <td class="compare-no"><i data-lucide="x"></i></td>
+            <td class="compare-no"><i data-lucide="x"></i></td>
+          </tr>
+          <tr>
+            <td>Built-in content calendar</td>
+            <td class="compare-col--brand compare-yes"><i data-lucide="check"></i></td>
+            <td class="compare-no"><i data-lucide="x"></i></td>
+            <td class="compare-no"><i data-lucide="minus"></i></td>
+          </tr>
+          <tr>
+            <td>Performance analytics</td>
+            <td class="compare-col--brand compare-yes"><i data-lucide="check"></i></td>
+            <td class="compare-no"><i data-lucide="x"></i></td>
+            <td class="compare-no"><i data-lucide="x"></i></td>
+          </tr>
+          <tr>
+            <td>Multi-platform formatting</td>
+            <td class="compare-col--brand compare-yes"><i data-lucide="check"></i></td>
+            <td class="compare-no"><i data-lucide="minus"></i></td>
+            <td class="compare-no"><i data-lucide="x"></i></td>
+          </tr>
+          <tr>
+            <td>All-in-one workspace</td>
+            <td class="compare-col--brand compare-yes"><i data-lucide="check"></i></td>
+            <td class="compare-no"><i data-lucide="x"></i></td>
+            <td class="compare-no"><i data-lucide="x"></i></td>
+          </tr>
+          <tr>
+            <td>Free plan available</td>
+            <td class="compare-col--brand compare-yes"><i data-lucide="check"></i></td>
+            <td class="compare-no"><i data-lucide="minus"></i></td>
+            <td class="compare-yes"><i data-lucide="check"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">Comparison based on typical feature sets as of 2026. Individual tools may vary.</p>
+  </div>
+</section>
+
 <!-- ================= FAQ ================= -->
-<section class="faq">
+<section class="faq" id="faq">
   <div class="container container--narrow">
     <div class="section-head reveal">
       <p class="eyebrow">FAQ</p>
@@ -4770,35 +4950,134 @@ input[type="range"].bk-range::-moz-range-thumb{ width:16px; height:16px; border-
         <a href="#features">Features</a>
         <a href="#showcase">AI Studio</a>
         <a href="#showcase">Calendar</a>
-        <a href="#showcase">Analytics</a>
+        <a href="#analytics">Analytics</a>
       </div>
 
       <div class="footer__col">
         <span class="footer__heading">Company</span>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Careers</a>
+        <a href="#top" data-footer-modal="about">About</a>
+        <a href="mailto:hello@asteraai.site">Contact</a>
+        <a href="mailto:careers@asteraai.site" data-footer-modal="careers">Careers</a>
       </div>
 
       <div class="footer__col">
         <span class="footer__heading">Resources</span>
-        <a href="#">Help Center</a>
-        <a href="#">Documentation</a>
-        <a href="#">Blog</a>
+        <a href="#faq" data-footer-modal="help">Help Center</a>
+        <a href="#top" data-footer-modal="docs">Documentation</a>
+        <a href="#top" data-footer-modal="blog">Blog</a>
       </div>
 
       <div class="footer__col">
         <span class="footer__heading">Legal</span>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
+        <a href="#top" data-footer-modal="privacy">Privacy</a>
+        <a href="#top" data-footer-modal="terms">Terms</a>
       </div>
     </div>
 
     <div class="footer__bottom">
       <span>&copy; 2026 Astera. All rights reserved.</span>
+      <a class="footer__credit" href="https://x.com/charlottewil87" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <span>Built by <strong>@charlottewil87</strong></span>
+      </a>
     </div>
   </div>
 </footer>
+
+<!-- ================= FOOTER INFO MODAL ================= -->
+<div class="modal-overlay" id="footer_modalOverlay">
+  <div class="modal-card modal-card--wide" id="footer_modalCard">
+    <button class="modal-close" id="footer_modalClose" aria-label="Close"><i data-lucide="x"></i></button>
+    <div id="footer_modalBody"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var FOOTER_CONTENT = {
+    about: {
+      title: "About Astera",
+      html: "<p>Astera is an AI-powered creator studio built to help creators turn raw ideas into finished content — faster, and without losing their voice.</p>" +
+            "<p>We combine AI drafting, a content calendar, and performance analytics into one workspace, so creators can spend less time switching tools and more time creating.</p>"
+    },
+    careers: {
+      title: "Careers at Astera",
+      html: "<p>We're a small, product-focused team building tools for creators. We don't have open roles listed right now, but we're always happy to hear from people who care about the creator economy.</p>" +
+            "<p>Send us your background and what you'd like to work on.</p>" +
+            "<div class=\"modal-actions\"><a href=\"mailto:careers@asteraai.site\" class=\"btn btn--primary btn--block\">Email careers@asteraai.site</a></div>"
+    },
+    help: {
+      title: "Help Center",
+      html: "<p>Most common questions are answered in our FAQ section below. If you can't find what you're looking for, our support team is one email away.</p>" +
+            "<div class=\"modal-actions\"><a href=\"#faq\" class=\"btn btn--secondary btn--block\" id=\"footer_helpToFaq\">Go to FAQ</a><a href=\"mailto:hello@asteraai.site\" class=\"btn btn--primary btn--block\">Contact Support</a></div>"
+    },
+    docs: {
+      title: "Documentation",
+      html: "<p>Astera's documentation covers getting started, connecting your brand voice, using the AI Studio, and reading your analytics dashboard.</p>" +
+            "<p>Full docs are being written alongside the product — for now, the fastest way to learn Astera is to explore the app or reach out and we'll walk you through it.</p>" +
+            "<div class=\"modal-actions\"><a href=\"mailto:hello@asteraai.site\" class=\"btn btn--primary btn--block\">Ask a question</a></div>"
+    },
+    blog: {
+      title: "Astera Blog",
+      html: "<p>We write about content strategy, AI-assisted creation, and what we're learning from creators using Astera.</p>" +
+            "<p>New posts are on the way. Follow along on X for updates.</p>" +
+            "<div class=\"modal-actions\"><a href=\"https://x.com/charlottewil87\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"btn btn--primary btn--block\">Follow on X</a></div>"
+    },
+    privacy: {
+      title: "Privacy Policy",
+      html: "<p><strong>Last updated:</strong> 2026</p>" +
+            "<p>Astera collects only the information needed to operate your account: your email, the content you create, and basic usage data used to improve the product.</p>" +
+            "<p>We never sell your data. Content you create is yours. You can request export or deletion of your data at any time by contacting us.</p>" +
+            "<p>For questions about this policy, contact <a href=\"mailto:hello@asteraai.site\">hello@asteraai.site</a>.</p>"
+    },
+    terms: {
+      title: "Terms of Service",
+      html: "<p><strong>Last updated:</strong> 2026</p>" +
+            "<p>By using Astera, you agree to use the service responsibly and not to misuse the platform to generate harmful or illegal content.</p>" +
+            "<p>Paid plans, when available, are billed on a recurring basis and can be cancelled at any time. The Free plan is provided as-is.</p>" +
+            "<p>For questions about these terms, contact <a href=\"mailto:hello@asteraai.site\">hello@asteraai.site</a>.</p>"
+    }
+  };
+
+  function initFooterLinks(){
+    var overlay = document.getElementById("footer_modalOverlay");
+    var body = document.getElementById("footer_modalBody");
+    var closeBtn = document.getElementById("footer_modalClose");
+    if (!overlay || !body || !closeBtn) return;
+
+    function openFooterModal(key){
+      var entry = FOOTER_CONTENT[key];
+      if (!entry) return;
+      body.innerHTML = "<h2>" + entry.title + "</h2>" + entry.html;
+      overlay.classList.add("is-open");
+      if (window.lucide) lucide.createIcons();
+      var faqLink = document.getElementById("footer_helpToFaq");
+      if (faqLink){
+        faqLink.addEventListener("click", function(){ closeFooterModal(); });
+      }
+    }
+    function closeFooterModal(){
+      overlay.classList.remove("is-open");
+    }
+
+    document.querySelectorAll("a[data-footer-modal]").forEach(function(link){
+      link.addEventListener("click", function(e){
+        e.preventDefault();
+        openFooterModal(link.getAttribute("data-footer-modal"));
+      });
+    });
+    closeBtn.addEventListener("click", closeFooterModal);
+    overlay.addEventListener("click", function(e){
+      if (e.target === overlay) closeFooterModal();
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFooterLinks);
+  } else {
+    initFooterLinks();
+  }
+})();
+</script>
 </div>
 
 <div id="view-login" class="app-view" data-view="login">
